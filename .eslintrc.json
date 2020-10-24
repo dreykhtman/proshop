@@ -13,5 +13,7 @@
     "sourceType": "module"
   },
   "plugins": ["prettier"],
-  "rules": {}
+  "rules": {
+    "react/jsx-one-expression-per-line": 0
+  }
 }
