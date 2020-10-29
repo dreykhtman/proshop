@@ -3,6 +3,7 @@
     "start": "snowpack dev",
     "build": "snowpack build"
   },
+  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
     "axios": "^0.21.0",
     "react": "^16.13.1",
