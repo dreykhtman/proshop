@@ -9,3 +9,8 @@ h3 {
 .rating span {
   margin: 0.09rem;
 }
+
+.form-control {
+  padding-left: 10px;
+  padding-right: 0;
+}
