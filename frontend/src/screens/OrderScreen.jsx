@@ -13,8 +13,10 @@ const OrderScreen = ({ match }) => {
   const { order, loading, error } = useSelector((state) => state.orderDetails);
 
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, [orderId, dispatch]);
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [order, orderId, dispatch]);
 
   return loading ? (
     <Loader />
