@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listProducts } from '../actions/productActions';
+import { deleteProduct, listProducts } from '../actions/productActions';
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -13,6 +13,11 @@ const ProductListScreen = ({ history, match }) => {
     (state) => state.productList
   );
   const { userInfo } = useSelector((state) => state.userLogin);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = useSelector((state) => state.productDelete);
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -20,11 +25,11 @@ const ProductListScreen = ({ history, match }) => {
     } else {
       history.push('/login');
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
-      // dispatch(deleteUser(id));
+      dispatch(deleteProduct(id));
     }
   };
 
@@ -42,6 +47,8 @@ const ProductListScreen = ({ history, match }) => {
           </Button>
         </Col>
       </Row>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
