@@ -28,7 +28,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.0.0",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.20",
     "prettier": "^2.1.2"
   },
   "dependencies": {
